@@ -33,8 +33,8 @@ export function ServicesSection({ compact = false, presentation = "minimal" }: S
         </div>
       )}
       <div className="service-grid">
-        {(presentation === "technology" && !compact ? [services[0], ...services.slice(1)] : services).map((service, index) => (
-          <ServiceCard featured={presentation === "technology" && !compact && index === 0} key={service.slug} onSelect={setSelectedService} service={service} />
+        {services.map((service, index) => (
+          <ServiceCard featured={presentation === "technology" && !compact && index < 2} key={service.slug} onSelect={setSelectedService} service={service} />
         ))}
       </div>
       <ServiceDialog

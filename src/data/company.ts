@@ -3,6 +3,8 @@ export const company = {
   description: "Muanotronics delivers electronic security solutions for residential, commercial and industrial properties.",
   heroImage: "https://images.unsplash.com/photo-1528312635006-8ea0bc49ec63?auto=format&fit=crop&w=1800&q=88",
   heroImageAlt: "Dome CCTV camera mounted on a building",
+  technologyHeroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=88",
+  technologyHeroImageAlt: "Modern commercial building at night",
   process: [
     { title: "Consultation", description: "Discuss your property and security requirements." },
     { title: "Site Assessment", description: "Review the site, access points and areas to cover." },

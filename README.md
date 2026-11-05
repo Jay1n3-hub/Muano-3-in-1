@@ -25,4 +25,6 @@ Visitors can choose Clean Minimal, Bold Corporate, or Corporate Technology with 
 
 Each design uses a separate homepage presentation (`src/designs/minimal`, `src/designs/corporate`, or `src/designs/technology`). Shared service data, enquiry forms, and service interactions are reused across the presentations. Corporate Technology also includes a four-step consultation-to-installation process.
 
+Clean Minimal remains the default presentation. Bold Corporate uses a dark, red-accented six-image service grid, while Corporate Technology uses a panoramic architectural hero, a four-item capability strip, two featured service cards, four supporting cards, and a responsive four-step process.
+
 The provided mockup was the only brand asset in the workspace. The wordmark and corner-mark treatment follow that reference; replace them with the stakeholder's original SVG/PNG files when available.

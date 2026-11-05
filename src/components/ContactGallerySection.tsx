@@ -13,17 +13,25 @@ export function ContactGallerySection({ presentation = "minimal" }: { presentati
           <Clock3 className="gallery-art__clock" size={26} strokeWidth={1.5} />
         </div>
         <div className="gallery-panel__copy">
-          <p className="eyebrow"><span /> OUR PROJECTS</p>
-          <h2>Project gallery<br />under construction.</h2>
-          <p>Our project gallery is being prepared. Contact us to discuss your requirements.</p>
+          <p className="eyebrow"><span /> {presentation === "minimal" ? "OUR PROJECTS" : "OUR PROJECT GALLERY"}</p>
+          <h2>
+            {presentation === "minimal"
+              ? <>Project gallery<br />under construction.</>
+              : <>Our Project Gallery<br /><span>Under Construction</span></>}
+          </h2>
+          <p>
+            {presentation === "minimal"
+              ? "Our project gallery is being prepared. Contact us to discuss your requirements."
+              : "We're preparing a showcase of our electronic security installations and solutions. Check back soon."}
+          </p>
         </div>
         <Link className="gallery-panel__link" to="/gallery/">View Gallery <ArrowUpRight aria-hidden="true" size={15} /></Link>
       </div>
       <div className="contact-panel" id="contact">
         <div className="contact-panel__copy">
           <p className="eyebrow"><span /> CONTACT US</p>
-          <h2>Discuss your<br />security requirements.</h2>
-          <p>Choose an enquiry type to get started.</p>
+          <h2>{presentation === "bold" ? <>Ready to Secure<br />Your Property?</> : <>Discuss your<br />security requirements.</>}</h2>
+          <p>{presentation === "minimal" ? "Choose an enquiry type to get started." : "Request a quote or arrange a site visit."}</p>
           <div className="button-row">
             <button className="button button--dark" onClick={() => openEnquiry("quote")} type="button">
               Request a Quote <ArrowUpRight size={16} />

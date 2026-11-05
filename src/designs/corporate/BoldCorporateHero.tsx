@@ -6,7 +6,7 @@ export function BoldCorporateHero() {
     <section aria-labelledby="hero-title" className="hero hero--bold">
       <div className="hero-copy">
         <p className="eyebrow"><span /> ELECTRONIC SECURITY SOLUTIONS</p>
-        <h1 id="hero-title">Smart Security.<br /><span>Intelligent</span><br />Protection.</h1>
+        <h1 id="hero-title">Smart Security.<br />Intelligent<br /><span>Protection.</span></h1>
         <p className="hero-copy__description">{company.description}</p>
         <HeroActions />
       </div>

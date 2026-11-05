@@ -601,12 +601,7 @@ img { display: block; max-width: 100%; }
 .main-nav__controls { flex: 0 0 auto; }
 .site-header--minimal .header-decoration { display: none; }
 .site-header--bold .site-header__decoration { color: #ed1c24; }
-.site-header--technology { display: grid; height: 100px; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-rows: 1fr 1fr; border-bottom-color: #d7e3ed; box-shadow: 0 4px 20px rgba(18,53,85,.05); }
-.site-header--technology .brand { grid-row: span 2; }
-.site-header--technology .main-nav { display: contents; }
-.site-header--technology .main-nav__links { grid-column: 2; grid-row: 1; justify-content: flex-end; gap: clamp(13px, 1.8vw, 29px); }
-.site-header--technology .main-nav__controls { grid-column: 2; grid-row: 2; justify-content: flex-end; gap: 5px; }
-.site-header--technology .header-cta { grid-column: 3; grid-row: 1 / span 2; }
+.site-header--technology { border-bottom-color: #d7e3ed; box-shadow: 0 4px 20px rgba(18,53,85,.05); }
 .site-header--bold .main-nav__links, .site-header--bold .main-nav__controls { gap: clamp(9px, 1.2vw, 17px); }
 .site-header--bold .main-nav { justify-content: center; }
 
@@ -713,7 +708,7 @@ img { display: block; max-width: 100%; }
 .design-preview__tech-strip { display: flex; height: 10px; gap: 4px; margin-top: 4px; background: #fff; }
 .design-preview__tech-strip i { flex: 1; border-right: 1px solid #d5e1eb; }
 
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .site-header--technology { display: flex; height: 86px; }
   .site-header--technology .main-nav { display: none; }
   .site-header--technology .main-nav--open { display: flex; }
@@ -997,7 +992,7 @@ img { display: block; max-width: 100%; }
   .site-header .nav-link, .site-header .nav-services > summary { font-size: 9px; }
   .site-header .appearance__trigger, .site-header .logo-style__trigger, .site-header .design-switcher__trigger { gap: 4px; padding-inline: 6px; font-size: 9px; }
 }
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   :root[data-design="bold"] .site-header { display: flex; }
   .site-header { backdrop-filter: none; }
   .site-header .menu-toggle { display: grid; width: 40px; height: 40px; flex: 0 0 auto; place-items: center; border: 1px solid var(--color-border); border-radius: 50%; background: var(--color-background); cursor: pointer; }
@@ -1122,3 +1117,173 @@ img { display: block; max-width: 100%; }
 :root[data-design="technology"] .technology-hero__services svg,
 :root[data-design="technology"] .services-section--technology .service-card__icon { color: var(--color-primary); }
 :root[data-design="technology"] .technology-process__steps li { border-color: color-mix(in srgb, var(--color-primary) 20%, #d5e1eb); }
+
+/* Bold Corporate presentation */
+.site-header--bold .brand__mark { stroke: #ed1c24; }
+.hero--bold .hero-copy::before {
+  position: absolute;
+  top: -20%;
+  right: -25%;
+  width: 58%;
+  height: 140%;
+  background: repeating-linear-gradient(120deg, transparent 0 42px, rgba(237, 28, 36, .12) 43px 58px, transparent 59px 92px);
+  content: "";
+  pointer-events: none;
+}
+.hero--bold .hero-copy > * { position: relative; z-index: 1; }
+:root[data-design="bold"] .services-section--bold { display: block; padding-block: clamp(42px, 5vw, 72px) clamp(55px, 7vw, 100px); background: #101012; color: #fff; }
+.services-section--bold .services-intro { display: flex; max-width: none; flex-direction: column; align-items: center; margin: 0 0 25px; text-align: center; }
+.services-section--bold .services-intro .eyebrow { color: #f04b52; }
+.services-section--bold .services-intro h2 { font-size: clamp(25px, 3vw, 39px); font-weight: 900; text-transform: uppercase; }
+.services-section--bold .services-intro > p:not(.eyebrow) { display: none; }
+.services-section--bold .services-intro .button { margin-top: 12px; }
+.services-section--bold .service-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
+.services-section--bold .service-card { position: relative; height: clamp(240px, 23vw, 340px); min-height: 0; border: 1px solid #343438; border-radius: 2px; background: #1d1d20; color: #fff; }
+.services-section--bold .service-card::after { position: absolute; z-index: 1; inset: 20% 0 0; background: linear-gradient(180deg, transparent 0%, rgba(12,12,14,.38) 38%, #111113 100%); content: ""; pointer-events: none; }
+.services-section--bold .service-card__image { position: absolute; inset: 0; width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; filter: saturate(.83) contrast(1.05); transition: transform .35s ease; }
+.services-section--bold .service-card:hover .service-card__image { transform: scale(1.045); }
+.services-section--bold .service-card__body { position: absolute; z-index: 2; inset: auto 0 0; min-height: 0; padding: 18px 14px; background: transparent; }
+.services-section--bold .service-card__heading { align-items: flex-start; gap: 8px; }
+.services-section--bold .service-card__icon { width: 27px; height: 27px; flex-basis: 27px; border-radius: 50%; background: #ed1c24; color: #fff; }
+.services-section--bold .service-card__title { font-size: clamp(11px, 1vw, 14px); font-weight: 800; line-height: 1.2; }
+.services-section--bold .service-card__summary { min-height: 27px; margin-top: 7px; color: #ededee; font-size: 10px; }
+.services-section--bold .service-card__actions { gap: 6px; padding-top: 9px; }
+.services-section--bold .service-card__action,
+.services-section--bold .service-card__page-link { color: #ff666d; font-size: 9px; }
+.contact-gallery-section--bold { grid-template-columns: 1fr 1fr; }
+.contact-gallery-section--bold .gallery-panel { position: relative; min-height: 360px; overflow: hidden; background: #121214; }
+.contact-gallery-section--bold .gallery-panel::before { position: absolute; inset: 0; background: repeating-linear-gradient(125deg, transparent 0 68px, rgba(237,28,36,.12) 69px 105px, transparent 106px 175px); content: ""; pointer-events: none; }
+.contact-gallery-section--bold .gallery-panel__copy,
+.contact-gallery-section--bold .gallery-art,
+.contact-gallery-section--bold .gallery-panel__link { position: relative; z-index: 1; }
+.contact-gallery-section--bold .gallery-art { border-color: #4a2528; color: #ed1c24; }
+.contact-gallery-section--bold .gallery-panel__copy .eyebrow { color: #ff5b63; }
+.contact-gallery-section--bold .gallery-panel__copy h2 span { color: #ed1c24; }
+.contact-gallery-section--bold .contact-panel { min-height: 360px; }
+.contact-gallery-section--bold .contact-panel .eyebrow { color: #fff; }
+.site-footer--bold { border-top: 5px solid #ed1c24; }
+
+/* Corporate Technology presentation */
+.technology-hero { background: #f1f5f9; }
+.technology-hero__intro { grid-template-columns: 1.05fr .95fr; }
+.technology-hero__copy .eyebrow { color: #1762a1; }
+.technology-hero h1 { max-width: 760px; font-size: clamp(44px, 5.4vw, 78px); }
+.technology-hero h1 span { color: #1762a1; }
+.technology-hero__image { min-height: clamp(290px, 40vh, 480px); max-height: 480px; border-radius: 5px; }
+.technology-hero__image img { min-height: clamp(290px, 40vh, 480px); max-height: 480px; object-position: center 54%; }
+.technology-hero__services { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 0; border: 0; background: #10243a; color: #fff; }
+.technology-hero__services > span { min-height: 58px; border-color: #34485c; color: #fff; font-size: 11px; }
+.technology-hero__services svg { color: #77b9f4; }
+.about-section--technology { grid-template-columns: minmax(0, .9fr) minmax(0, 1fr); align-items: center; gap: clamp(28px, 5vw, 74px); background: #fff; }
+.about-section--technology .about-image-wrap { height: clamp(300px, 32vw, 440px); border-radius: 8px; }
+.about-section--technology .about-copy { grid-column: 1; }
+.about-section--technology .about-copy h2 { max-width: 520px; color: #10243a; font-size: clamp(32px, 4vw, 51px); }
+.about-section--technology .about-copy .eyebrow { color: #1762a1; }
+.about-section--technology .why-card { grid-column: 1 / -1; display: grid; grid-template-columns: .8fr 1fr 2fr; align-items: center; gap: 12px 24px; padding: 25px 28px; border-color: #d4e0ea; border-radius: 7px; background: #f0f5f9; }
+.about-section--technology .why-card .eyebrow,
+.about-section--technology .why-card h3 { margin: 0; color: #10243a; }
+.about-section--technology .why-card ul { grid-column: 3; grid-row: 1 / span 2; grid-template-columns: 1fr 1fr; gap: 12px; }
+.about-section--technology .why-card li { font-size: 11px; }
+.about-section--technology .why-check { background: #1762a1; }
+.about-section--technology .why-card .text-link { grid-column: 1 / span 2; grid-row: 2; margin: 0; color: #1762a1; }
+.services-section--technology { display: block; padding-block: clamp(55px, 7vw, 92px); background: #f0f5f9; }
+.services-section--technology .services-intro { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 10px 24px; margin-bottom: 25px; }
+.services-section--technology .services-intro .eyebrow { grid-column: 1 / -1; margin: 0; color: #1762a1; }
+.services-section--technology .services-intro h2 { color: #10243a; font-size: clamp(33px, 4vw, 52px); }
+.services-section--technology .services-intro > p:not(.eyebrow) { grid-column: 1; margin: 0; color: #526a80; }
+.services-section--technology .services-intro .button { grid-column: 2; grid-row: 2 / span 2; }
+.services-section--technology .service-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: minmax(235px, auto); gap: 14px; }
+.services-section--technology .service-card { border: 1px solid #d6e2ec; border-radius: 7px; background: #fff; box-shadow: 0 5px 16px rgba(18,53,85,.06); }
+.services-section--technology .service-card--featured { grid-column: span 2; grid-row: span 1; }
+.services-section--technology .service-card--featured .service-card__image { aspect-ratio: 1.85 / 1; }
+.services-section--technology .service-card__icon { background: #e4f0fa; color: #1762a1; }
+.services-section--technology .service-card__title { color: #10243a; }
+.technology-process { grid-template-columns: .8fr 1.9fr; background: #fff; }
+.technology-process__intro .eyebrow { color: #1762a1; }
+.technology-process__steps { counter-reset: process; }
+.technology-process__steps li { min-height: 170px; border-color: #d4e0ea; border-top: 3px solid #1762a1; background: #f7f9fb; }
+.technology-process__number,
+.technology-process__arrow { color: #1762a1; }
+.contact-gallery-section--technology { grid-template-columns: 1fr; }
+.contact-gallery-section--technology .gallery-panel { min-height: 300px; grid-template-columns: 90px minmax(0, 1fr); align-content: center; column-gap: 24px; background: #eaf2f8; }
+.contact-gallery-section--technology .gallery-art { grid-row: 1 / span 2; border-color: #c3d8e9; background: #d6eafa; color: #1762a1; }
+.contact-gallery-section--technology .gallery-panel__copy .eyebrow { color: #1762a1; }
+.contact-gallery-section--technology .gallery-panel__copy h2 { color: #10243a; }
+.contact-gallery-section--technology .gallery-panel__copy h2 span { color: #1762a1; }
+.contact-gallery-section--technology .gallery-panel__copy > p:last-child { color: #526a80; }
+.contact-gallery-section--technology .gallery-panel__link { grid-column: 2; }
+.contact-gallery-section--technology .contact-panel { min-height: 370px; background: #dbe8f3; }
+.contact-gallery-section--technology .contact-panel__copy .eyebrow { color: #1762a1; }
+.contact-gallery-section--technology .contact-panel__copy h2 { color: #10243a; }
+.contact-gallery-section--technology .contact-panel__copy > p:not(.eyebrow) { color: #526a80; }
+.contact-gallery-section--technology .contact-panel .button--dark { background: #1762a1; }
+.contact-gallery-section--technology .contact-panel__image { background-image: linear-gradient(90deg, #dbe8f3 0%, rgba(219,232,243,.78) 27%, transparent 78%), url("https://images.unsplash.com/photo-1528312635006-8ea0bc49ec63?auto=format&fit=crop&w=1400&q=85"); }
+.site-footer--technology { border-top: 4px solid #1762a1; background: #10243a; }
+.site-footer--technology .footer-main { grid-template-columns: 1.3fr .8fr 1.2fr 1fr; }
+.site-footer--technology .footer-column h2 { color: #8fc5f1; }
+.site-footer--technology .footer-bottom { border-color: #34485c; }
+
+@media (max-width: 1100px) {
+  .services-section--bold .service-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .services-section--bold .service-card { height: 290px; }
+  .technology-hero { min-height: 0; }
+  .technology-hero__image,
+  .technology-hero__image img { min-height: 34vh; }
+  .about-section--technology .why-card { grid-template-columns: .8fr 1.2fr; }
+  .about-section--technology .why-card ul { grid-column: 2; grid-row: 1 / span 2; }
+  .about-section--technology .why-card .text-link { grid-column: 1; grid-row: 2; }
+  .services-section--technology .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .services-section--technology .service-card--featured { grid-column: span 1; }
+  .technology-process { grid-template-columns: 1fr; }
+  .site-footer--technology .footer-main { grid-template-columns: 1.2fr 1fr; }
+}
+@media (max-width: 600px) {
+  .hero--bold { min-height: 0; }
+  .hero--bold .hero-copy { min-height: 0; padding: 48px 22px 35px; }
+  .hero--bold .hero-visual,
+  .hero--bold .hero-visual__image { min-height: 285px; max-height: 330px; }
+  .services-section--bold .service-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .services-section--bold .service-card { height: 230px; }
+  .services-section--bold .service-card__body { padding: 13px 10px; }
+  .services-section--bold .service-card__heading { flex-direction: column; }
+  .services-section--bold .service-card__summary { display: none; }
+  .services-section--bold .service-card__actions { flex-wrap: wrap; }
+  .services-section--bold .service-card__action,
+  .services-section--bold .service-card__page-link { font-size: 8px; }
+  .contact-gallery-section--bold { grid-template-columns: 1fr; }
+  .contact-gallery-section--bold .gallery-panel { min-height: 300px; }
+  .technology-hero { padding: 38px 20px 17px; }
+  .technology-hero__intro { grid-template-columns: 1fr; gap: 15px; }
+  .technology-hero h1 { font-size: clamp(42px, 10.5vw, 58px); }
+  .technology-hero__aside { display: flex; flex-direction: column; gap: 15px; }
+  .technology-hero__aside p { font-size: 12px; }
+  .technology-hero__image,
+  .technology-hero__image img { min-height: 245px; max-height: 270px; }
+  .technology-hero__services { grid-template-columns: 1fr 1fr; }
+  .technology-hero__services > span { min-height: 54px; justify-content: flex-start; padding-inline: 12px; border-bottom: 1px solid #34485c; font-size: 9px; }
+  .technology-hero__services > span:nth-child(2) { border-right: 0; }
+  .technology-hero__services > span:nth-child(n+3) { border-bottom: 0; }
+  .about-section--technology { grid-template-columns: 1fr; }
+  .about-section--technology .about-copy,
+  .about-section--technology .about-image-wrap { grid-column: 1; grid-row: auto; }
+  .about-section--technology .about-copy h2 { font-size: 34px; }
+  .about-section--technology .why-card { display: flex; align-items: stretch; }
+  .about-section--technology .why-card ul { grid-template-columns: 1fr; }
+  .services-section--technology .services-intro { grid-template-columns: 1fr; }
+  .services-section--technology .services-intro .button { grid-column: 1; grid-row: auto; justify-self: start; }
+  .services-section--technology .service-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+  .services-section--technology .service-card--featured { grid-column: 1; min-height: 285px; }
+  .services-section--technology .service-card__image,
+  .services-section--technology .service-card--featured .service-card__image { aspect-ratio: 16 / 10; }
+  .technology-process__steps { grid-template-columns: 1fr; }
+  .technology-process__steps li { min-height: 118px; padding: 14px 16px; }
+  .technology-process__number { margin-bottom: 10px; }
+  .technology-process__arrow { top: auto; right: 15px; bottom: 14px; transform: rotate(90deg); }
+  .contact-gallery-section--technology { grid-template-columns: 1fr; }
+  .contact-gallery-section--technology .gallery-panel { min-height: 290px; grid-template-columns: 1fr; gap: 14px; padding: 27px 22px; }
+  .contact-gallery-section--technology .gallery-art { grid-row: auto; }
+  .contact-gallery-section--technology .gallery-panel__link { grid-column: 1; }
+  .contact-gallery-section--technology .contact-panel { min-height: 350px; align-items: flex-end; padding: 30px 21px; }
+  .contact-gallery-section--technology .contact-panel__image { inset: 0 0 35% 36%; }
+  .site-footer--technology .footer-main { grid-template-columns: 1fr 1fr; }
+}
