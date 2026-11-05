@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f8f8f7" />
+    <script>
+      try {
+        const design = localStorage.getItem("muanotronics-design");
+        document.documentElement.dataset.design = ["minimal", "bold", "technology"].includes(design) ? design : "minimal";
+      } catch {
+        document.documentElement.dataset.design = "minimal";
+      }
+    </script>
+    <meta
+      name="description"
+      content="Professional electronic security solutions for homes and businesses. Explore CCTV, access control, alarms and more with Muanotronics."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Muanotronics | Smart Security. Intelligent Protection." />
+    <meta
+      property="og:description"
+      content="Reliable, tailored electronic security solutions for homes and businesses."
+    />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1528312635006-8ea0bc49ec63?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Muanotronics | Smart Security. Intelligent Protection.</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <form name="project-enquiry" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="project-enquiry" />
+      <p><label>Leave this field empty: <input name="bot-field" /></label></p>
+      <input name="requestType" />
+      <input name="fullName" />
+      <input name="email" />
+      <input name="phone" />
+      <input name="service" />
+      <input name="propertyType" />
+      <input name="preferredDate" />
+      <input name="preferredTime" />
+      <textarea name="message"></textarea>
+    </form>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
