@@ -37,7 +37,7 @@ If Supabase is not configured, `/admin/login` shows a backend-not-configured not
 - `/admin/content` — edit public pages, save drafts, preview changes, publish and restore revisions.
 - `/admin/services` — create, edit, publish, reorder and delete service records.
 - `/admin/gallery` — upload project photos, manage project details, and publish projects to the public gallery.
-- `/admin/logos` — manage approved logos and favicon assets; the existing public vector mark remains the fallback.
+- `/admin/logos` — upload a new website logo or restore a previous logo.
 - `/admin/enquiries` — review quote and site-visit requests, update status and save internal notes.
 - `/admin/settings` — website/contact/SEO settings plus security and integration status.
 - `/admin/analytics` — honest under-construction placeholder; no fabricated metrics.

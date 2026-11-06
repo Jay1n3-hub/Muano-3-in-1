@@ -11,7 +11,7 @@ const navigation = [
   { label: "Website Content", to: "/admin/content", icon: FileText },
   { label: "Services Manager", to: "/admin/services", icon: Grid2X2 },
   { label: "Project Gallery", to: "/admin/gallery", icon: Images },
-  { label: "Logo Manager", to: "/admin/logos", icon: FolderOpen },
+  { label: "Logo", to: "/admin/logos", icon: FolderOpen },
   { label: "Enquiries", to: "/admin/enquiries", icon: Mail },
   { label: "Settings", to: "/admin/settings", icon: Settings },
   { label: "Analytics", to: "/admin/analytics", icon: BarChart3, badge: "Soon" },

@@ -72,7 +72,7 @@ export function AdminDashboardPage() {
     { label: "Edit Homepage", to: "/admin/content/home", icon: FileText },
     { label: "Manage Services", to: "/admin/services", icon: Grid2X2 },
     { label: "Manage Project Gallery", to: "/admin/gallery", icon: Images },
-    { label: "Manage Logos", to: "/admin/logos", icon: FolderOpen },
+    { label: "Update Logo", to: "/admin/logos", icon: FolderOpen },
     { label: "View Enquiries", to: "/admin/enquiries", icon: Mail },
     { label: "Website Settings", to: "/admin/settings", icon: Settings },
   ];
