@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, type ReactNode } from "react";
 
 export type DesignId = "minimal" | "bold" | "technology";
 
@@ -14,27 +14,8 @@ interface DesignContextValue {
 }
 
 const DesignContext = createContext<DesignContextValue | null>(null);
-const allowedDesigns = designOptions.map(({ id }) => id);
-
-function getStoredDesign(): DesignId {
-  const savedDesign = window.localStorage.getItem("muanotronics-design");
-  return allowedDesigns.includes(savedDesign as DesignId) ? savedDesign as DesignId : "minimal";
-}
-
 export function DesignProvider({ children }: { children: ReactNode }) {
-  const [design, updateDesign] = useState<DesignId>(getStoredDesign);
-
-  function setDesign(nextDesign: DesignId) {
-    updateDesign(nextDesign);
-    document.documentElement.dataset.design = nextDesign;
-  }
-
-  useEffect(() => {
-    document.documentElement.dataset.design = design;
-    window.localStorage.setItem("muanotronics-design", design);
-  }, [design]);
-
-  return <DesignContext.Provider value={{ design, setDesign }}>{children}</DesignContext.Provider>;
+  return <DesignContext.Provider value={{ design: "technology", setDesign: () => undefined }}>{children}</DesignContext.Provider>;
 }
 
 export function useDesign(): DesignContextValue {

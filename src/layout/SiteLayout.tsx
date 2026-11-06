@@ -4,6 +4,7 @@ import { EnquiryDialog, type RequestType } from "../components/EnquiryDialog";
 import { ScrollReset } from "../components/ScrollReset";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
+import { usePublishedSiteData } from "../context/PublishedSiteContext";
 
 export interface SiteActions {
   openEnquiry: (type?: RequestType, service?: string) => void;
@@ -22,6 +23,7 @@ export function usePageActions(): SiteActions {
 }
 
 export function SiteLayout({ children }: { children?: ReactNode }) {
+  const { error: contentError } = usePublishedSiteData();
   const [enquiryOpen, setEnquiryOpen] = useState(false);
   const [requestType, setRequestType] = useState<RequestType>("quote");
   const [service, setService] = useState<string>();
@@ -39,6 +41,7 @@ export function SiteLayout({ children }: { children?: ReactNode }) {
       <ScrollReset />
       <div className="min-h-screen w-full" id="top">
         <SiteHeader onRequestQuote={() => openEnquiry()} />
+        {contentError && <p className="site-data-warning" role="status">Some published content is temporarily unavailable.</p>}
         {children ?? <Outlet context={actions} />}
         <SiteFooter />
       </div>

@@ -5,12 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f8f8f7" />
     <script>
-      try {
-        const design = localStorage.getItem("muanotronics-design");
-        document.documentElement.dataset.design = ["minimal", "bold", "technology"].includes(design) ? design : "minimal";
-      } catch {
-        document.documentElement.dataset.design = "minimal";
-      }
+      document.documentElement.dataset.design = "technology";
+      document.documentElement.dataset.theme = "blue";
     </script>
     <meta
       name="description"

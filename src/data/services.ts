@@ -20,6 +20,8 @@ export interface SecurityService {
   image: string;
   imageAlt: string;
   imagePosition?: string;
+  seoTitle?: string;
+  seoDescription?: string;
   icon: LucideIcon;
 }
 

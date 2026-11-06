@@ -1,17 +1,21 @@
 import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
-import { services } from "../data/services";
 import { Brand } from "./Brand";
-import { useDesign } from "../context/DesignContext";
+import { usePublishedSiteData } from "../context/PublishedSiteContext";
 
 export function SiteFooter() {
-  const { design } = useDesign();
+  const { services, settings } = usePublishedSiteData();
+  const contact = settings.contact ?? {};
+  const general = settings.general ?? {};
+  const socialLinks = typeof contact.social_links === "string"
+    ? contact.social_links.split(/\r?\n/).map((url) => url.trim()).filter((url) => /^https?:\/\//i.test(url))
+    : [];
   return (
-    <footer className={`site-footer site-footer--${design}`}>
+    <footer className="site-footer site-footer--technology">
       <div className="footer-main">
         <div className="footer-brand">
           <Brand light />
-          <p>Electronic security solutions for residential, commercial and industrial properties.</p>
+          <p>{String(contact.footer_description ?? "Electronic security solutions for residential, commercial and industrial properties.")}</p>
         </div>
         <div className="footer-column">
           <h2>Explore</h2>
@@ -30,14 +34,15 @@ export function SiteFooter() {
         </div>
         <div className="footer-column footer-contact">
           <h2>Contact Us</h2>
-          <a href="https://maps.google.com/?q=Pretoria+South+Africa"><MapPin aria-hidden="true" size={15} /> Pretoria, South Africa</a>
-          <a href="tel:+27101234567"><Phone aria-hidden="true" size={15} /> +27 10 123 4567</a>
-          <a href="mailto:info@muanotronics.co.za"><Mail aria-hidden="true" size={15} /> info@muanotronics.co.za</a>
+          <a href={String(contact.google_maps_url ?? "https://maps.google.com/?q=Pretoria+South+Africa")}><MapPin aria-hidden="true" size={15} /> {String(contact.location ?? "Pretoria, South Africa")}</a>
+          <a href={`tel:${String(contact.telephone ?? "+27 10 123 4567").replace(/[^\d+]/g, "")}`}><Phone aria-hidden="true" size={15} /> {String(contact.telephone ?? "+27 10 123 4567")}</a>
+          <a href={`mailto:${String(contact.email ?? "info@muanotronics.co.za")}`}><Mail aria-hidden="true" size={15} /> {String(contact.email ?? "info@muanotronics.co.za")}</a>
           <Link className="footer-contact-link" to="/contact/">Get in touch <ArrowUpRight size={15} /></Link>
+          {socialLinks.map((url) => <a href={url} key={url} rel="noreferrer" target="_blank">{url.replace(/^https?:\/\/(?:www\.)?/i, "").split("/")[0]}</a>)}
         </div>
       </div>
       <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} Muanotronics. All rights reserved.</span>
+        <span>{String(contact.footer_copyright ?? `© ${new Date().getFullYear()} ${String(general.display_company_name ?? "Muanotronics")}. All rights reserved.`)}</span>
         <Link to="/contact/">Contact Muanotronics <ArrowUpRight size={13} /></Link>
       </div>
     </footer>

@@ -2,9 +2,9 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import type { SecurityService } from "../data/services";
-import { services } from "../data/services";
 import { usePageActions } from "../layout/SiteLayout";
 import { ServiceDialog } from "./ServiceDialog";
+import { usePublishedSiteData } from "../context/PublishedSiteContext";
 
 interface ServicesSectionProps {
   compact?: boolean;
@@ -14,6 +14,7 @@ interface ServicesSectionProps {
 export function ServicesSection({ compact = false, presentation = "minimal" }: ServicesSectionProps) {
   const [selectedService, setSelectedService] = useState<SecurityService | null>(null);
   const { openEnquiry } = usePageActions();
+  const { services } = usePublishedSiteData();
 
   return (
     <section aria-labelledby="services-title" className={`services-section services-section--${presentation} page-section${compact ? " services-section--standalone" : ""}`} id="services">

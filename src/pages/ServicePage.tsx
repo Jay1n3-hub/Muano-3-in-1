@@ -1,11 +1,12 @@
 import { ArrowLeft, ArrowUpRight, Check, ChevronRight } from "lucide-react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { Seo } from "../components/Seo";
-import { services } from "../data/services";
 import { usePageActions } from "../layout/SiteLayout";
+import { usePublishedSiteData } from "../context/PublishedSiteContext";
 
 export function ServicePage() {
   const { slug } = useParams();
+  const { services } = usePublishedSiteData();
   const service = services.find((item) => item.slug === slug);
   const { openEnquiry } = usePageActions();
 
@@ -16,7 +17,7 @@ export function ServicePage() {
 
   return (
     <>
-      <Seo description={service.description} title={`${service.title} | Muanotronics`} />
+      <Seo description={service.seoDescription || service.description} title={service.seoTitle || `${service.title} | Muanotronics`} />
       <main className="service-page">
         <section className="service-hero">
           <div className="service-hero__copy">

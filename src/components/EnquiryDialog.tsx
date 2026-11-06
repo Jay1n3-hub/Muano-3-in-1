@@ -1,6 +1,9 @@
 import { CalendarDays, Check, Clock3, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { services } from "../data/services";
+import { isSupabaseConfigured, supabase } from "../lib/supabase";
+import { usePublishedSiteData } from "../context/PublishedSiteContext";
 
 export type RequestType = "quote" | "site-visit";
 
@@ -18,8 +21,13 @@ const serviceOptions = [
 ];
 
 export function EnquiryDialog({ open, requestType: initialRequestType, service, onClose }: EnquiryDialogProps) {
+  const navigate = useNavigate();
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [requestType, setRequestType] = useState<RequestType>(initialRequestType);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const { content } = usePublishedSiteData();
+  const contactContent = content.contact ?? {};
 
   useEffect(() => {
     setRequestType(initialRequestType);
@@ -33,6 +41,37 @@ export function EnquiryDialog({ open, requestType: initialRequestType, service, 
   function closeDialog() {
     dialogRef.current?.close();
     onClose();
+  }
+
+  async function submitEnquiry(event: React.FormEvent<HTMLFormElement>) {
+    if (!isSupabaseConfigured) return;
+    event.preventDefault();
+    if (!supabase || !dialogRef.current) return;
+    setSubmitting(true);
+    setSubmitError("");
+    const formData = new FormData(event.currentTarget);
+    const { error } = await supabase.from("enquiries").insert({
+      enquiry_type: requestType === "quote" ? "quote" : "site_visit",
+      full_name: String(formData.get("fullName") ?? "").trim(),
+      email: String(formData.get("email") ?? "").trim(),
+      phone: String(formData.get("phone") ?? "").trim(),
+      service_required: String(formData.get("service") ?? ""),
+      property_type: String(formData.get("propertyType") ?? ""),
+      preferred_date: formData.get("preferredDate") || null,
+      preferred_time: formData.get("preferredTime") || null,
+      message: String(formData.get("message") ?? "").trim(),
+    });
+
+    if (error) {
+      setSubmitError(`Your enquiry could not be saved. Please try again or contact us directly. (${error.message})`);
+      setSubmitting(false);
+      return;
+    }
+
+    dialogRef.current.close();
+    onClose();
+    navigate("/contact-success/");
+    setSubmitting(false);
   }
 
   const today = new Date();
@@ -57,7 +96,7 @@ export function EnquiryDialog({ open, requestType: initialRequestType, service, 
       <button aria-label="Close enquiry form" className="dialog-close" onClick={closeDialog} type="button"><X size={20} /></button>
       <p className="eyebrow"><span /> CONTACT US</p>
       <h2 id="enquiry-title">{requestType === "quote" ? "Request a Quote" : "Request a Site Visit"}</h2>
-      <p className="dialog-intro">Provide your property and contact details. Our team will follow up.</p>
+      <p className="dialog-intro">{String(requestType === "quote" ? contactContent.quote_instructions ?? "Provide your property and contact details. Our team will follow up." : contactContent.site_visit_instructions ?? "Provide your property, preferred visit details and contact information.")}</p>
 
       <div aria-label="Enquiry type" className="request-tabs" role="group">
         <button aria-pressed={requestType === "quote"} className={requestType === "quote" ? "request-tab request-tab--active" : "request-tab"} onClick={() => setRequestType("quote")} type="button">
@@ -75,6 +114,7 @@ export function EnquiryDialog({ open, requestType: initialRequestType, service, 
         data-netlify-honeypot="bot-field"
         method="POST"
         name="project-enquiry"
+        onSubmit={submitEnquiry}
       >
         <input name="form-name" type="hidden" value="project-enquiry" />
         <input name="requestType" type="hidden" value={requestType === "quote" ? "Quote" : "Site Visit"} />
@@ -126,8 +166,9 @@ export function EnquiryDialog({ open, requestType: initialRequestType, service, 
           </label>
         </div>
         <p className="privacy-note"><Check aria-hidden="true" size={14} /> Your details will only be used to respond to this enquiry.</p>
-        <button className="button button--dark form-submit" type="submit">
-          {requestType === "quote" ? "Send Quote Request" : "Request a Site Visit"} <span aria-hidden="true">↗</span>
+        {submitError && <p className="admin-notice admin-notice--error" role="alert">{submitError}</p>}
+        <button className="button button--dark form-submit" disabled={submitting} type="submit">
+          {submitting ? "Sending…" : requestType === "quote" ? "Send Quote Request" : "Request a Site Visit"} <span aria-hidden="true">↗</span>
         </button>
       </form>
     </dialog>

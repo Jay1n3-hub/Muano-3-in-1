@@ -2,21 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./App";
-import { ThemeProvider } from "./context/ThemeContext";
-import { LogoProvider } from "./context/LogoContext";
-import { DesignProvider } from "./context/DesignContext";
+import { AdminAuthProvider } from "./admin/AuthContext";
 import "./styles.css";
+import "./admin/admin.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <ThemeProvider>
-        <LogoProvider>
-          <DesignProvider>
-            <App />
-          </DesignProvider>
-        </LogoProvider>
-      </ThemeProvider>
+      <AdminAuthProvider>
+        <App />
+      </AdminAuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
 );
